@@ -1,10 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Game from './components/Game/game.component';
-// import { render } from '@testing-library/react';
-import Adapter from 'enzyme-adapter-react-16';
-
 import App from './App';
+import Adapter from 'enzyme-adapter-react-16';
 import { configure, mount, shallow } from 'enzyme';
 import { expect } from 'chai';
 
