@@ -1,5 +1,6 @@
 import React from 'react';
 import './game.styles.scss';
+import Board from '../Board/board.component';
 
 // NOTE: making this a class component to store game state
 class Game extends React.Component {
@@ -13,7 +14,11 @@ class Game extends React.Component {
 
   render() {
     return (
-      <div>TEST</div>
+      <div className='game-container'>
+        <div>Tic Tac Toe!</div>
+        <Board />
+        <div>other game info will go here...</div>
+      </div>
     )
   }
 }
