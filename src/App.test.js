@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Game from './components/Game/Game';
+import Game from './components/Game/game.component';
 // import { render } from '@testing-library/react';
+import Adapter from 'enzyme-adapter-react-16';
 
 import App from './App';
-import { mount, shallow } from 'enzyme';
+import { configure, mount, shallow } from 'enzyme';
 import { expect } from 'chai';
+
+configure({ adapter: new Adapter() });
 
 describe('<App />', () => {
   it('contains a <Game /> component', () => {
@@ -13,9 +16,3 @@ describe('<App />', () => {
     expect(wrapper.find(Game)).to.have.length(1);
   });
 });
-// NOTE: come back to this later
-// test('renders learn react link', () => {
-//   const { getByText } = render(<App />);
-//   const linkElement = getByText(/learn react/i);
-//   expect(linkElement).toBeInTheDocument();
-// });
