@@ -21,7 +21,6 @@ class Game extends React.Component {
       <div className='game-container'>
         <h1>Tic Tac Toe!</h1>
         <Board />
-        <div>other game info will go here...</div>
       </div>
     )
   }
