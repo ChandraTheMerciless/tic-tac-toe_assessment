@@ -8,8 +8,12 @@ class Game extends React.Component {
     super();
 
     this.state = {
-
+      squares: []
     };
+  }
+
+  componentDidMount () {
+    this.setState({squares: Array(this.squareAmount).fill({})});
   }
 
   render() {
