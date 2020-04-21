@@ -10,6 +10,6 @@ configure({ adapter: new Adapter() });
 describe('<Board />', () => {
   it('contains a <Square /> component', () => {
     const wrapper = mount(<Board/>);
-    expect(wrapper.find(Square)).to.have.length(6);
+    expect(wrapper.find(Square)).to.have.length(9);
   });
 });
