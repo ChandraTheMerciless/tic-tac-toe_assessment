@@ -2,7 +2,6 @@ import React from 'react';
 import './game.styles.scss';
 import Board from '../Board/board.component';
 import Status from '../Status/status.component';
-import { throwStatement } from '@babel/types';
 
 // NOTE: making this a class component to store game state
 class Game extends React.Component {
@@ -12,7 +11,8 @@ class Game extends React.Component {
     super();
 
     this.state = {
-      squares: []
+      squares: [],
+      nextPlayer: 'X'
     };
   }
 
@@ -28,8 +28,12 @@ class Game extends React.Component {
     this.setState({squares: squares});
   }
 
-  handleClick = () => {
-    // add code later
+  handleClick = (squareId) => {
+    // on click this function should... 
+    // - if square clicked has text, return function
+    // - set new state on square clicked to have its text as X or O
+    // - set another state to say whether X or O is next
+    // 
   }
 
   render() {

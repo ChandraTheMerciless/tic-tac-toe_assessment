@@ -33,5 +33,18 @@ describe('<Game />', () => {
     expect(wrapper.state('squares')[0].text).to.equal('');
     // expect(wrapper.state('squares')[0].handleClick).to.equal(wrapper.handleClick);
     expect(wrapper.state('squares')[5].id).to.equal(5);
+  });
+
+  it('sets the square text to X if it is clicked', () => {
+    const wrapper = mount(<Game />);
+    expect(wrapper.state('squares')[0].text).to.equal('');
+    wrapper.find('button').first().simulate('click');
+    expect(wrapper.state('squares')[0].text).to.equal('X');
+  });
+
+  it('sets the next player to O if a square is clicked an odd number of times', () => {
+    const wrapper = mount(<Game />);
+    wrapper.find('button').first().simulate('click');
+    expect(wrapper.state('nextPlayer')).to.equal('O');
   })
 });
