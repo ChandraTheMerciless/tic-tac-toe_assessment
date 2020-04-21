@@ -1,0 +1,14 @@
+$square-background-color: white;
+
+.square {
+  border: 1px solid black;
+  width: 120px;
+  height: 120px;
+  color: #333333;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    background-color: darken($square-background-color, 10%);
+  }
+}

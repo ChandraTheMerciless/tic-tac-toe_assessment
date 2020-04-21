@@ -15,7 +15,7 @@ class Game extends React.Component {
   render() {
     return (
       <div className='game-container'>
-        <div>Tic Tac Toe!</div>
+        <h1>Tic Tac Toe!</h1>
         <Board />
         <div>other game info will go here...</div>
       </div>

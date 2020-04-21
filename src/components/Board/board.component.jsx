@@ -20,7 +20,7 @@ class Board extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='board-container'>
         {
           this.state.squares.map((square, id) => {
             return <Square key={id} />
