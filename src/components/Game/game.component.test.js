@@ -9,6 +9,10 @@ import { expect } from 'chai';
 configure({ adapter: new Adapter() });
 
 describe('<Game />', () => {
+  beforeEach(() => {
+    
+  });
+
   it('contains a <Board /> component', () => {
     const wrapper = mount(<Game/>);
     expect(wrapper.find(Board)).to.have.length(1);
@@ -18,4 +22,16 @@ describe('<Game />', () => {
     const wrapper = mount(<Game/>);
     expect(wrapper.containsMatchingElement(<Status />)).to.equal(true);
   });
+
+  it('contains 9 squares in the state', () => {
+    const wrapper = mount(<Game />);
+    expect(wrapper.state('squares').length).to.equal(9);
+  });
+
+  it('contains squares in the state that are set to have certain properties on load', () => {
+    const wrapper = mount(<Game />);
+    expect(wrapper.state('squares')[0].text).to.equal('');
+    expect(wrapper.state('squares')[0].handleClick).to.exist();
+    expect(wrapper.state('squares')[0].id).to.equal(0);
+  })
 });

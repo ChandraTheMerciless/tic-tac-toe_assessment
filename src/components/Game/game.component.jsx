@@ -5,6 +5,8 @@ import Status from '../Status/status.component';
 
 // NOTE: making this a class component to store game state
 class Game extends React.Component {
+  squareAmount = 9;
+
   constructor() {
     super();
 
@@ -21,7 +23,7 @@ class Game extends React.Component {
     return (
       <div className='game-container'>
         <h1>Tic Tac Toe!</h1>
-        <Board />
+        <Board squares={this.state.squares} />
         <Status />
       </div>
     )

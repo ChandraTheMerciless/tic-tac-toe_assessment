@@ -9,7 +9,7 @@ configure({ adapter: new Adapter() });
 
 describe('<Board />', () => {
   it('contains a <Square /> component', () => {
-    const wrapper = mount(<Board/>);
+    const wrapper = mount(<Board squares={Array(9).fill({})}/>);
     expect(wrapper.find(Square)).to.have.length(9);
   });
 });

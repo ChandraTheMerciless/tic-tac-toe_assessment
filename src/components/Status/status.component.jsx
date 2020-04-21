@@ -1,5 +1,5 @@
 import React from 'react';
-import './board.styles.scss';
+import './status.styles.scss';
 
 const Status = () => {
   return (
