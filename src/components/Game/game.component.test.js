@@ -31,7 +31,7 @@ describe('<Game />', () => {
   it('contains squares in the state that are set to have certain properties on load', () => {
     const wrapper = mount(<Game />);
     expect(wrapper.state('squares')[0].text).to.equal('');
-    expect(wrapper.state('squares')[0].handleClick).to.exist();
-    expect(wrapper.state('squares')[0].id).to.equal(0);
+    // expect(wrapper.state('squares')[0].handleClick).to.equal(wrapper.handleClick);
+    expect(wrapper.state('squares')[5].id).to.equal(5);
   })
 });

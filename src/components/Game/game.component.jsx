@@ -2,6 +2,7 @@ import React from 'react';
 import './game.styles.scss';
 import Board from '../Board/board.component';
 import Status from '../Status/status.component';
+import { throwStatement } from '@babel/types';
 
 // NOTE: making this a class component to store game state
 class Game extends React.Component {
@@ -16,7 +17,19 @@ class Game extends React.Component {
   }
 
   componentDidMount () {
-    this.setState({squares: Array(this.squareAmount).fill({})});
+    let squares = Array(this.squareAmount).fill({});
+    squares = squares.map((square, id) => {
+      let _square = JSON.parse(JSON.stringify(square));
+      _square.id = id;
+      _square.text = '';
+      _square.handleClick = this.handleClick;
+      return _square;
+    });
+    this.setState({squares: squares});
+  }
+
+  handleClick = () => {
+    // add code later
   }
 
   render() {
