@@ -30,7 +30,7 @@ class Game extends React.Component {
   }
 
   handleClick = (square) => {
-    if (!!this.state.squares[square.id].text) { return; };
+    if (!!this.state.squares[square.id].text || !!this.state.winner) { return; };
 
     const squares = this.state.squares.slice();
     squares[square.id].text = this.state.nextPlayer;
