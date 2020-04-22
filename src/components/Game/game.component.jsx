@@ -28,12 +28,14 @@ class Game extends React.Component {
     this.setState({squares: squares});
   }
 
-  handleClick = (squareId) => {
-    // on click this function should... 
-    // - if square clicked has text, return function
-    // - set new state on square clicked to have its text as X or O
-    // - set another state to say whether X or O is next
-    // 
+  handleClick = (square) => {
+    if (!!this.state.squares[square.id].text) { return; };
+    const squares = this.state.squares.slice();
+    squares[square.id].text = this.state.nextPlayer;
+    this.setState({
+      squares: squares,
+      nextPlayer: this.state.nextPlayer === 'X' ? 'O' : 'X'
+    });
   }
 
   render() {

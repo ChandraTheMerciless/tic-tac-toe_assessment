@@ -6,8 +6,8 @@ const Board = (props) => {
   return (
     <div className='board-container'>
       {
-        props.squares.map((square, id) => {
-          return <Square key={id} />
+        props.squares.map((square) => {
+          return <Square key={square.id} text={square.text} handleClick={() => square.handleClick(square)} />
         })
       }
     </div>
