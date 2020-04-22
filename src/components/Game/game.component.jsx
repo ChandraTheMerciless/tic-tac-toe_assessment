@@ -12,7 +12,8 @@ class Game extends React.Component {
 
     this.state = {
       squares: [],
-      nextPlayer: 'X'
+      nextPlayer: 'X',
+      winner: ''
     };
   }
 
@@ -37,6 +38,8 @@ class Game extends React.Component {
       nextPlayer: this.state.nextPlayer === 'X' ? 'O' : 'X'
     });
   }
+
+
 
   render() {
     return (

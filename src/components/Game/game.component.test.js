@@ -47,4 +47,9 @@ describe('<Game />', () => {
     wrapper.find('button').first().simulate('click');
     expect(wrapper.state('nextPlayer')).to.equal('O');
   })
+
+  it('sets the winner state to an empty string if no squares have been clicked', () => {
+    const wrapper = mount(<Game />);
+    expect(wrapper.state('winner')).to.equal('');
+  })
 });

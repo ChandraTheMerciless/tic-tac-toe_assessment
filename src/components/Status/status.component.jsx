@@ -1,10 +1,12 @@
 import React from 'react';
 import './status.styles.scss';
 
-const Status = () => {
+const Status = (props) => {
+  
   return (
     <div className='status-container'>
-      Game status info goes here
+      {/* if no winner, show player who is next */}
+      {/* if winner, declare who winner is */}
     </div>
   );
 }
