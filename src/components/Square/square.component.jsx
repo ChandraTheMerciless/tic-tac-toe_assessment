@@ -7,7 +7,7 @@ const Square = (props) => {
       type='button'
       className='square'
       onClick={props.handleClick}
-    >{ !!props.text ? props.text : '' }</button>
+    >{props.text}</button>
   )
 }
 
