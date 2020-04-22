@@ -127,7 +127,7 @@ describe('<Game />', () => {
     wrapper.find('button').at(3).simulate('click');
     wrapper.find('button').at(4).simulate('click');
     wrapper.find('button').at(1).simulate('click');
-    wrapper.find('button').at(7).simulate('click');
+    wrapper.find('button').at(8).simulate('click');
 
     expect(wrapper.state('winner')).to.equal('X');
   });

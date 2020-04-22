@@ -31,15 +31,40 @@ class Game extends React.Component {
 
   handleClick = (square) => {
     if (!!this.state.squares[square.id].text) { return; };
+
     const squares = this.state.squares.slice();
     squares[square.id].text = this.state.nextPlayer;
+
+    const isWinner = this.checkForWinner(squares);
+    
     this.setState({
       squares: squares,
-      nextPlayer: this.state.nextPlayer === 'X' ? 'O' : 'X'
+      nextPlayer: this.state.nextPlayer === 'X' ? 'O' : 'X',
+      winner: isWinner ? this.state.nextPlayer : ''
     });
   }
 
+  checkForWinner = (squares) => {
+    const textValues = squares.map(square => square.text);
 
+    const firstRow =          !!this.findMatches([textValues[0], textValues[1], textValues[2]]);
+    const secondRow =         !!this.findMatches([textValues[3], textValues[4], textValues[5]]);
+    const thirdRow =          !!this.findMatches([textValues[6], textValues[7], textValues[8]]);
+    const firstColumn =       !!this.findMatches([textValues[0], textValues[3], textValues[6]]);
+    const secondColumn =      !!this.findMatches([textValues[1], textValues[4], textValues[7]]);
+    const thirdColumn =       !!this.findMatches([textValues[2], textValues[5], textValues[8]]);
+    const forwardDiagonal =   !!this.findMatches([textValues[2], textValues[4], textValues[6]]);
+    const backwardDiagonal =  !!this.findMatches([textValues[0], textValues[4], textValues[8]]);
+
+    return firstRow || secondRow || thirdRow || firstColumn || secondColumn || thirdColumn || forwardDiagonal || backwardDiagonal;
+  }
+
+  findMatches = (values) => {
+    debugger;
+    const allValuesDefined = values.filter(value => !!value).length === 3;
+    const valuesMatch = (values[0] === values[1]) && (values[1] === values[2]);
+    return allValuesDefined && valuesMatch;
+  }
 
   render() {
     return (
