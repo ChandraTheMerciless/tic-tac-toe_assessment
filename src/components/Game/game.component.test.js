@@ -142,4 +142,16 @@ describe('<Game />', () => {
 
     expect(wrapper.state('winner')).to.equal('X');
   });
+
+  it('prevents any other button clicks from firing if a a player wins', () => {
+    const wrapper = mount(<Game />);
+    wrapper.find('button').at(2).simulate('click');
+    wrapper.find('button').at(3).simulate('click');
+    wrapper.find('button').at(4).simulate('click');
+    wrapper.find('button').at(1).simulate('click');
+    wrapper.find('button').at(6).simulate('click');
+    // At this point, player X wins, so clicking un unclicked square will not change its text value
+    wrapper.find('button').at(5).simulate('click');
+    expect(wrapper.state('squares')[5].text).to.equal('');
+  });
 });
