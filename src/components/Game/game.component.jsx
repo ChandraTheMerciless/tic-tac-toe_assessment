@@ -46,24 +46,26 @@ class Game extends React.Component {
 
   checkForWinner = (squares) => {
     const textValues = squares.map(square => square.text);
+    const lines = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [2, 4, 6],
+      [0, 4, 8]
+    ];
 
-    const firstRow =          !!this.findMatches([textValues[0], textValues[1], textValues[2]]);
-    const secondRow =         !!this.findMatches([textValues[3], textValues[4], textValues[5]]);
-    const thirdRow =          !!this.findMatches([textValues[6], textValues[7], textValues[8]]);
-    const firstColumn =       !!this.findMatches([textValues[0], textValues[3], textValues[6]]);
-    const secondColumn =      !!this.findMatches([textValues[1], textValues[4], textValues[7]]);
-    const thirdColumn =       !!this.findMatches([textValues[2], textValues[5], textValues[8]]);
-    const forwardDiagonal =   !!this.findMatches([textValues[2], textValues[4], textValues[6]]);
-    const backwardDiagonal =  !!this.findMatches([textValues[0], textValues[4], textValues[8]]);
+    let matchFound = lines.filter((line) => {
+      const [a, b, c] = line;
+      const allValuesDefined = !!textValues[a] && !!textValues[b] && !!textValues[c];
+      if (allValuesDefined) {
+        return textValues[a] === textValues[b] && textValues[b] === textValues[c]
+      };
+    }).length > 0;
 
-    return firstRow || secondRow || thirdRow || firstColumn || secondColumn || thirdColumn || forwardDiagonal || backwardDiagonal;
-  }
-
-  findMatches = (values) => {
-    debugger;
-    const allValuesDefined = values.filter(value => !!value).length === 3;
-    const valuesMatch = (values[0] === values[1]) && (values[1] === values[2]);
-    return allValuesDefined && valuesMatch;
+    return !!matchFound;
   }
 
   render() {
