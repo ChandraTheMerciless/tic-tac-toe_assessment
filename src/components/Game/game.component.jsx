@@ -11,14 +11,23 @@ class Game extends React.Component {
   constructor() {
     super();
 
-    this.state = {
-      squares: [],
-      nextPlayer: 'X',
-      winner: ''
-    };
+    this.state = this.getInitialState();
   }
 
   componentDidMount () {
+    this.getInitialSquaresArray();
+  }
+
+  getInitialState = () => {
+    return {
+      squares: [],
+      nextPlayer: 'X',
+      winner: '',
+      history: []
+    };
+  }
+
+  getInitialSquaresArray = () => {
     let squares = Array(this.squareAmount).fill({});
     squares = squares.map((square, id) => {
       let _square = JSON.parse(JSON.stringify(square));
@@ -34,15 +43,21 @@ class Game extends React.Component {
     if (!!this.state.squares[square.id].text || !!this.state.winner) { return; };
 
     const squares = this.state.squares.slice();
-    squares[square.id].text = this.state.nextPlayer;
+    const currentPlayer = this.state.nextPlayer;
+    squares[square.id].text = currentPlayer;
 
     const isWinner = this.checkForWinner(squares);
-    
+
     this.setState({
       squares: squares,
       nextPlayer: this.state.nextPlayer === 'X' ? 'O' : 'X',
-      winner: isWinner ? this.state.nextPlayer : ''
+      winner: isWinner ? currentPlayer : ''
     });
+  }
+
+  resetGame = () => {
+    this.setState(this.getInitialState());
+    this.getInitialSquaresArray();
   }
 
   checkForWinner = (squares) => {
@@ -83,6 +98,7 @@ class Game extends React.Component {
             text='Reset Game'
             key='reset-game'
             id='reset-game'
+            handleClick={this.resetGame}
           />
         </div>
         <Board squares={this.state.squares} />
