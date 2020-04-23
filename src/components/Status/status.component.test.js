@@ -7,12 +7,12 @@ import { expect } from 'chai';
 configure({ adapter: new Adapter() });
 
 describe('<State />', () => {
-  it('sets text props', () => {
+  it('sets the proper text if there is a winner', () => {
     const wrapper = mount(<Status isWinner={true} player='X' />);
     const statusEl = wrapper.find('.status-container').first();
     expect(statusEl.text()).to.equal('The winner is X!');
   });
-  it('sets disabled props', () => {
+  it('sets the proper text is there is no winner', () => {
     const wrapper = mount(<Status isWinner={false} player='O' />);
     const statusEl = wrapper.find('.status-container').first();
     expect(statusEl.text()).to.equal('The next player is O');

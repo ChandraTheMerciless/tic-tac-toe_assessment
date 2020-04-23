@@ -10,7 +10,7 @@ $square-background-color: white;
   display: inline-block;
   vertical-align: top;
 
-  &:hover {
+  &:hover:enabled {
     background-color: darken($square-background-color, 10%);
   }
 }
