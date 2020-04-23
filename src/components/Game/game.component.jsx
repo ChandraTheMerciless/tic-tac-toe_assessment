@@ -2,6 +2,7 @@ import React from 'react';
 import './game.styles.scss';
 import Board from '../Board/board.component';
 import Status from '../Status/status.component';
+import CustomButton from '../CustomButton/custom-button.component';
 
 // NOTE: making this a class component to store game state
 class Game extends React.Component {
@@ -72,6 +73,8 @@ class Game extends React.Component {
     return (
       <div className='game-container'>
         <h1>Tic Tac Toe!</h1>
+        <CustomButton />
+        <CustomButton />
         <Board squares={this.state.squares} />
         <Status />
       </div>

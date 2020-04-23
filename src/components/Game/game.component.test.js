@@ -40,13 +40,13 @@ describe('<Game />', () => {
   it('sets the square text to X if it is clicked', () => {
     const wrapper = mount(<Game />);
     expect(wrapper.state('squares')[0].text).to.equal('');
-    wrapper.find('button').first().simulate('click');
+    wrapper.find('.square').first().simulate('click');
     expect(wrapper.state('squares')[0].text).to.equal('X');
   });
 
   it('sets the next player to O if a square is clicked an odd number of times', () => {
     const wrapper = mount(<Game />);
-    wrapper.find('button').first().simulate('click');
+    wrapper.find('.square').first().simulate('click');
     expect(wrapper.state('nextPlayer')).to.equal('O');
   });
 
@@ -57,45 +57,45 @@ describe('<Game />', () => {
 
   it('sets the winner state to an X if a winning condition for X on first row is true', () => {
     const wrapper = mount(<Game />);
-    wrapper.find('button').at(0).simulate('click');
-    wrapper.find('button').at(4).simulate('click');
-    wrapper.find('button').at(1).simulate('click');
-    wrapper.find('button').at(5).simulate('click');
-    wrapper.find('button').at(2).simulate('click');
+    wrapper.find('.square').at(0).simulate('click');
+    wrapper.find('.square').at(4).simulate('click');
+    wrapper.find('.square').at(1).simulate('click');
+    wrapper.find('.square').at(5).simulate('click');
+    wrapper.find('.square').at(2).simulate('click');
 
     expect(wrapper.state('winner')).to.equal('X');
   });
 
   it('sets the winner state to an O if a winning condition for O on second row is true', () => {
     const wrapper = mount(<Game />);
-    wrapper.find('button').at(0).simulate('click');
-    wrapper.find('button').at(3).simulate('click');
-    wrapper.find('button').at(6).simulate('click');
-    wrapper.find('button').at(4).simulate('click');
-    wrapper.find('button').at(2).simulate('click');
-    wrapper.find('button').at(5).simulate('click');
+    wrapper.find('.square').at(0).simulate('click');
+    wrapper.find('.square').at(3).simulate('click');
+    wrapper.find('.square').at(6).simulate('click');
+    wrapper.find('.square').at(4).simulate('click');
+    wrapper.find('.square').at(2).simulate('click');
+    wrapper.find('.square').at(5).simulate('click');
 
     expect(wrapper.state('winner')).to.equal('O');
   });
 
   it('sets the winner state to an X if a winning condition for X on last row is true', () => {
     const wrapper = mount(<Game />);
-    wrapper.find('button').at(6).simulate('click');
-    wrapper.find('button').at(0).simulate('click');
-    wrapper.find('button').at(7).simulate('click');
-    wrapper.find('button').at(4).simulate('click');
-    wrapper.find('button').at(8).simulate('click');
+    wrapper.find('.square').at(6).simulate('click');
+    wrapper.find('.square').at(0).simulate('click');
+    wrapper.find('.square').at(7).simulate('click');
+    wrapper.find('.square').at(4).simulate('click');
+    wrapper.find('.square').at(8).simulate('click');
 
     expect(wrapper.state('winner')).to.equal('X');
   });
 
   it('sets the winner state to an X if a winning condition for X on first column is true', () => {
     const wrapper = mount(<Game />);
-    wrapper.find('button').at(0).simulate('click');
-    wrapper.find('button').at(1).simulate('click');
-    wrapper.find('button').at(3).simulate('click');
-    wrapper.find('button').at(2).simulate('click');
-    wrapper.find('button').at(6).simulate('click');
+    wrapper.find('.square').at(0).simulate('click');
+    wrapper.find('.square').at(1).simulate('click');
+    wrapper.find('.square').at(3).simulate('click');
+    wrapper.find('.square').at(2).simulate('click');
+    wrapper.find('.square').at(6).simulate('click');
 
     expect(wrapper.state('winner')).to.equal('X');
   });
@@ -103,57 +103,57 @@ describe('<Game />', () => {
 
   it('sets the winner state to an X if a winning condition for X on second column is true', () => {
     const wrapper = mount(<Game />);
-    wrapper.find('button').at(1).simulate('click');
-    wrapper.find('button').at(0).simulate('click');
-    wrapper.find('button').at(4).simulate('click');
-    wrapper.find('button').at(2).simulate('click');
-    wrapper.find('button').at(7).simulate('click');
+    wrapper.find('.square').at(1).simulate('click');
+    wrapper.find('.square').at(0).simulate('click');
+    wrapper.find('.square').at(4).simulate('click');
+    wrapper.find('.square').at(2).simulate('click');
+    wrapper.find('.square').at(7).simulate('click');
 
     expect(wrapper.state('winner')).to.equal('X');
   });
 
   it('sets the winner state to an X if a winning condition for X on third column is true', () => {
     const wrapper = mount(<Game />);
-    wrapper.find('button').at(2).simulate('click');
-    wrapper.find('button').at(0).simulate('click');
-    wrapper.find('button').at(5).simulate('click');
-    wrapper.find('button').at(1).simulate('click');
-    wrapper.find('button').at(8).simulate('click');
+    wrapper.find('.square').at(2).simulate('click');
+    wrapper.find('.square').at(0).simulate('click');
+    wrapper.find('.square').at(5).simulate('click');
+    wrapper.find('.square').at(1).simulate('click');
+    wrapper.find('.square').at(8).simulate('click');
 
     expect(wrapper.state('winner')).to.equal('X');
   });
 
   it('sets the winner state to an X if a winning condition for X on backward diagonal is true', () => {
     const wrapper = mount(<Game />);
-    wrapper.find('button').at(0).simulate('click');
-    wrapper.find('button').at(3).simulate('click');
-    wrapper.find('button').at(4).simulate('click');
-    wrapper.find('button').at(1).simulate('click');
-    wrapper.find('button').at(8).simulate('click');
+    wrapper.find('.square').at(0).simulate('click');
+    wrapper.find('.square').at(3).simulate('click');
+    wrapper.find('.square').at(4).simulate('click');
+    wrapper.find('.square').at(1).simulate('click');
+    wrapper.find('.square').at(8).simulate('click');
 
     expect(wrapper.state('winner')).to.equal('X');
   });
 
   it('sets the winner state to an X if a winning condition for X on forward diagonal is true', () => {
     const wrapper = mount(<Game />);
-    wrapper.find('button').at(2).simulate('click');
-    wrapper.find('button').at(3).simulate('click');
-    wrapper.find('button').at(4).simulate('click');
-    wrapper.find('button').at(1).simulate('click');
-    wrapper.find('button').at(6).simulate('click');
+    wrapper.find('.square').at(2).simulate('click');
+    wrapper.find('.square').at(3).simulate('click');
+    wrapper.find('.square').at(4).simulate('click');
+    wrapper.find('.square').at(1).simulate('click');
+    wrapper.find('.square').at(6).simulate('click');
 
     expect(wrapper.state('winner')).to.equal('X');
   });
 
   it('prevents any other button clicks from firing if a a player wins', () => {
     const wrapper = mount(<Game />);
-    wrapper.find('button').at(2).simulate('click');
-    wrapper.find('button').at(3).simulate('click');
-    wrapper.find('button').at(4).simulate('click');
-    wrapper.find('button').at(1).simulate('click');
-    wrapper.find('button').at(6).simulate('click');
+    wrapper.find('.square').at(2).simulate('click');
+    wrapper.find('.square').at(3).simulate('click');
+    wrapper.find('.square').at(4).simulate('click');
+    wrapper.find('.square').at(1).simulate('click');
+    wrapper.find('.square').at(6).simulate('click');
     // At this point, player X wins, so clicking un unclicked square will not change its text value
-    wrapper.find('button').at(5).simulate('click');
+    wrapper.find('.square').at(5).simulate('click');
     expect(wrapper.state('squares')[5].text).to.equal('');
   });
 });
