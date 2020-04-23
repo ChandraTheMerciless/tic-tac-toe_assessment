@@ -23,7 +23,18 @@ describe('<Game />', () => {
   it('contains two instances of the <CustomButton /> component', () => {
     const wrapper = mount(<Game />);
     expect(wrapper.find(CustomButton)).to.have.length(2);
-  })
+  });
+
+  it('resets game if <CustomButton /> instance with reset-game id is clicked', () => {
+    const wrapper = mount(<Game />);
+    const resetGameButtonEl = wrapper.find('#reset-game');
+    console.log(resetGameButtonEl.length);
+    // simulate a button click to get the game going
+    wrapper.find('.square').at(0).simulate('click');
+    resetGameButtonEl.at(1).simulate('click');
+    expect(wrapper.state('squares')[0].text).to.equal('');
+    expect(wrapper.state('history').length).to.equal(0);
+  });
 
   it('contains 9 squares in the state', () => {
     const wrapper = mount(<Game />);

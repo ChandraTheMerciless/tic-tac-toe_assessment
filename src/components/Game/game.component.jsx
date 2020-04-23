@@ -73,10 +73,20 @@ class Game extends React.Component {
     return (
       <div className='game-container'>
         <h1>Tic Tac Toe!</h1>
-        <CustomButton />
-        <CustomButton />
+        <div className='game-controls-container'>
+          <CustomButton
+            text='Go Back a Move'
+            key='rewind-game'
+            id='rewind-game'
+          />
+          <CustomButton
+            text='Reset Game'
+            key='reset-game'
+            id='reset-game'
+          />
+        </div>
         <Board squares={this.state.squares} />
-        <Status />
+        <Status isWinner={!!this.state.winner} player={this.state.nextPlayer}/>
       </div>
     )
   }
