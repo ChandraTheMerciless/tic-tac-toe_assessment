@@ -2,7 +2,13 @@ import React from 'react';
 
 const CustomButton = (props) => {
   return (
-    <button>Test</button>
+    <button
+      className='custom-button'
+      disabled={props.isDisabled}
+      onClick={props.handleClick}
+    >
+      {props.text}
+    </button>
   )
 };
 

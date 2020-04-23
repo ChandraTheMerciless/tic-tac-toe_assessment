@@ -13,8 +13,8 @@ describe('<CustomButtom />', () => {
     expect(buttonEl.text()).to.equal('foo');
   });
   it('sets disabled props', () => {
-    const wrapper = mount(<CustomButton isDisabled='true'/>);
+    const wrapper = mount(<CustomButton isDisabled={true}/>);
     const buttonEl = wrapper.find('button').first();
-    expect(buttonEl.attribs['disabled']).to.equal(true);
+    expect(buttonEl.prop('disabled')).to.equal(true);
   });
 });
