@@ -1,6 +1,7 @@
 import React from 'react';
 import Game from './game.component';
 import Board from '../Board/board.component';
+import CustomButton from '../CustomButton/custom-button.component';
 import Status from '../Status/status.component';
 import Adapter from 'enzyme-adapter-react-16';
 import { configure, mount, shallow } from 'enzyme';
@@ -9,10 +10,6 @@ import { expect } from 'chai';
 configure({ adapter: new Adapter() });
 
 describe('<Game />', () => {
-  beforeEach(() => {
-    
-  });
-
   it('contains a <Board /> component', () => {
     const wrapper = mount(<Game/>);
     expect(wrapper.find(Board)).to.have.length(1);
@@ -22,6 +19,11 @@ describe('<Game />', () => {
     const wrapper = mount(<Game/>);
     expect(wrapper.containsMatchingElement(<Status />)).to.equal(true);
   });
+
+  it('contains two instances of the <CustomButton /> component', () => {
+    const wrapper = mount(<Game />);
+    expect(wrapper.find(CustomButton)).to.have.length(2);
+  })
 
   it('contains 9 squares in the state', () => {
     const wrapper = mount(<Game />);
