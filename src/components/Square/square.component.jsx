@@ -7,6 +7,7 @@ const Square = (props) => {
       type='button'
       className='square'
       onClick={props.handleClick}
+      disabled={!!props.text ? true : false}
     >{props.text}</button>
   )
 }
