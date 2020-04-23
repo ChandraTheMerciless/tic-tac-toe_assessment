@@ -12,4 +12,14 @@ describe('<Square />', () => {
     const buttonEl = wrapper.find('button').first();
     expect(buttonEl.text()).to.equal('fooBar');
   });
+  it('sets disabled props to false if there is no text', () => {
+    const wrapper = mount(<Square text='' />);
+    const buttonEl = wrapper.find('button').first();
+    expect(buttonEl.prop('disabled')).to.equal(false);
+  });
+  it('sets disabled props to true if there is text', () => {
+    const wrapper = mount(<Square text='X' />);
+    const buttonEl = wrapper.find('button').first();
+    expect(buttonEl.prop('disabled')).to.equal(true);
+  });
 });
