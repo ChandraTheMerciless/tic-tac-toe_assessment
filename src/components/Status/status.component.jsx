@@ -4,9 +4,15 @@ import './status.styles.scss';
 const Status = (props) => {
   
   return (
-    <div className='status-container'>
-      {/* if no winner, show player who is next */}
-      {/* if winner, declare who winner is */}
+    <div
+      className='status-container'
+    >
+      {
+        props.isWinner ? 
+          `The winner is ${props.player}!`
+        :
+          `The next player is ${props.player}`
+      }
     </div>
   );
 }
