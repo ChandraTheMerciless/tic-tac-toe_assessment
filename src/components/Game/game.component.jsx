@@ -54,11 +54,19 @@ class Game extends React.Component {
       nextPlayer: this.state.nextPlayer === 'X' ? 'O' : 'X',
       winner: isWinner ? currentPlayer : ''
     });
+
+    this.buildHistory(squares);
   }
 
   resetGame = () => {
     this.setState(this.getInitialState());
     this.getInitialSquaresArray();
+  }
+
+  buildHistory = (squares) => {
+    const squaresCopy = JSON.parse(JSON.stringify(squares));
+    const newHistoryArray = [...this.state.history, squaresCopy];
+    this.setState({history: newHistoryArray});
   }
 
   checkForWinner = (squares) => {
