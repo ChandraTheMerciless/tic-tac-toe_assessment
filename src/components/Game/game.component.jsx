@@ -102,7 +102,7 @@ class Game extends React.Component {
           />
         </div>
         <Board squares={this.state.squares} />
-        <Status isWinner={!!this.state.winner} player={this.state.nextPlayer}/>
+        <Status winner={this.state.winner} player={this.state.nextPlayer}/>
       </div>
     )
   }

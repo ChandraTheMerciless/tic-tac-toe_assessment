@@ -8,8 +8,8 @@ const Status = (props) => {
       className='status-container'
     >
       {
-        props.isWinner ? 
-          `The winner is ${props.player}!`
+        !!props.winner ? 
+          `The winner is ${props.winner}!`
         :
           `The next player is ${props.player}`
       }
