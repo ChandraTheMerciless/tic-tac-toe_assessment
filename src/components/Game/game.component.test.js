@@ -183,5 +183,15 @@ describe('<Game />', () => {
     const resetGameButtonEl = wrapper.find('#reset-game');
     resetGameButtonEl.at(1).simulate('click');
     expect(wrapper.state('history').length).to.equal(0);
+  });
+
+  it('should rewind the squares state when the Go Back a Move button is pressed', () => {
+    const wrapper = mount(<Game />);
+    wrapper.find('.square').at(2).simulate('click');
+    wrapper.find('.square').at(4).simulate('click');
+    const rewindGameButtonEl = wrapper.find('#rewind-game');
+    rewindGameButtonEl.at(0).simulate('click');
+    expect(wrapper.state('squares')[2].text).to.equal('X');
+    expect(wrapper.state('squares')[4].text).to.equal('');
   })
 });
