@@ -28,7 +28,6 @@ describe('<Game />', () => {
   it('resets game if <CustomButton /> instance with reset-game id is clicked', () => {
     const wrapper = mount(<Game />);
     const resetGameButtonEl = wrapper.find('#reset-game');
-    console.log(resetGameButtonEl.length);
     // simulate a button click to get the game going
     wrapper.find('.square').at(0).simulate('click');
     resetGameButtonEl.at(1).simulate('click');
@@ -167,4 +166,22 @@ describe('<Game />', () => {
     wrapper.find('.square').at(5).simulate('click');
     expect(wrapper.state('squares')[5].text).to.equal('');
   });
+
+  it('should fill history array when each game move, or with each click of a square button', () => {
+    const wrapper = mount(<Game />);
+    expect(wrapper.state('history').length).to.equal(0);
+    wrapper.find('.square').at(2).simulate('click');
+    expect(wrapper.state('history').length).to.equal(1);
+    wrapper.find('.square').at(4).simulate('click');
+    expect(wrapper.state('history').length).to.equal(2);
+  });
+
+  it('should empty the history array on a game rest', () => {
+    const wrapper = mount(<Game />);
+    wrapper.find('.square').at(2).simulate('click');
+    wrapper.find('.square').at(4).simulate('click');
+    const resetGameButtonEl = wrapper.find('#reset-game');
+    resetGameButtonEl.at(1).simulate('click');
+    expect(wrapper.state('history').length).to.equal(0);
+  })
 });

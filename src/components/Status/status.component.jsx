@@ -7,7 +7,6 @@ const Status = (props) => {
   }
 
   const getTextIfNoWinner = () => {
-    debugger
     let statusMessage = getMissingSquaresText() ?
       `The next player is ${props.player}`
     :
