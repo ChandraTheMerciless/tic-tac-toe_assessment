@@ -23,7 +23,8 @@ class Game extends React.Component {
       squares: [],
       nextPlayer: 'X',
       winner: '',
-      history: []
+      history: [],
+      emptySquares: true
     };
   }
 
@@ -102,7 +103,11 @@ class Game extends React.Component {
           />
         </div>
         <Board squares={this.state.squares} />
-        <Status winner={this.state.winner} player={this.state.nextPlayer}/>
+        <Status
+          winner={this.state.winner}
+          player={this.state.nextPlayer}
+          squaresText={this.state.squares.map(square => square.text)}
+        />
       </div>
     )
   }
