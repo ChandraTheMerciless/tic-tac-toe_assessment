@@ -1,6 +1,6 @@
 import React from 'react';
 import Game from './game.component';
-import Board from '../Board/board.component';
+import Square from '../Square/square.component';
 import CustomButton from '../CustomButton/custom-button.component';
 import Status from '../Status/status.component';
 import Adapter from 'enzyme-adapter-react-16';
@@ -10,9 +10,9 @@ import { expect } from 'chai';
 configure({ adapter: new Adapter() });
 
 describe('<Game />', () => {
-  it('contains a <Board /> component', () => {
+  it('contains a <Square /> component', () => {
     const wrapper = mount(<Game/>);
-    expect(wrapper.find(Board)).to.have.length(1);
+    expect(wrapper.find(Square)).to.have.length(9);
   });
 
   it('contains a <Status /> component', () => {
@@ -110,7 +110,6 @@ describe('<Game />', () => {
     expect(wrapper.state('winner')).to.equal('X');
   });
 
-
   it('sets the winner state to an X if a winning condition for X on second column is true', () => {
     const wrapper = mount(<Game />);
     wrapper.find('.square').at(1).simulate('click');
@@ -193,5 +192,5 @@ describe('<Game />', () => {
     rewindGameButtonEl.at(0).simulate('click');
     expect(wrapper.state('squares')[2].text).to.equal('X');
     expect(wrapper.state('squares')[4].text).to.equal('');
-  })
+  });
 });

@@ -1,6 +1,7 @@
 import React from 'react';
 import './game.styles.scss';
-import Board from '../Board/board.component';
+// import Board from '../Board/board.component';
+import Square from '../Square/square.component';
 import Status from '../Status/status.component';
 import CustomButton from '../CustomButton/custom-button.component';
 
@@ -34,13 +35,13 @@ class Game extends React.Component {
       let _square = JSON.parse(JSON.stringify(square));
       _square.id = id;
       _square.text = '';
-      _square.handleClick = this.handleClick;
+      _square.handleClick = this.handleSquareClick;
       return _square;
     });
     this.setState({squares: squares});
   }
 
-  handleClick = (square) => {
+  handleSquareClick = (square) => {
     if (!!this.state.winner) { return; };
 
     const squares = this.state.squares.slice();
@@ -58,13 +59,20 @@ class Game extends React.Component {
     this.buildHistory(squares);
   }
 
+  rewindGame = () => {
+    debugger;
+    const filledSquaresNum = this.state.squares.filter(square => !!square.text).length;
+    const previousSquareSet = this.state.history[filledSquaresNum - 2];
+    this.setState({squares: previousSquareSet});
+  }
+
   resetGame = () => {
     this.setState(this.getInitialState());
     this.getInitialSquaresArray();
   }
 
   buildHistory = (squares) => {
-    const squaresCopy = JSON.parse(JSON.stringify(squares));
+    const squaresCopy = Object.assign({}, squares);
     const newHistoryArray = [...this.state.history, squaresCopy];
     this.setState({history: newHistoryArray});
   }
@@ -102,6 +110,7 @@ class Game extends React.Component {
             text='Go Back a Move'
             key='rewind-game'
             id='rewind-game'
+            handleClick={this.rewindGame}
           />
           <CustomButton
             text='Reset Game'
@@ -110,7 +119,13 @@ class Game extends React.Component {
             handleClick={this.resetGame}
           />
         </div>
-        <Board squares={this.state.squares} />
+        <div className="game-board">
+          {
+            this.state.squares.map((square) => {
+              return <Square key={square.id} text={square.text} handleClick={() => square.handleClick(square)} />
+            })
+          }
+        </div>
         <Status
           winner={this.state.winner}
           player={this.state.nextPlayer}
